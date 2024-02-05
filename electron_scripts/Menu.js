@@ -1,7 +1,5 @@
 const menu = (app) => {
-  return;
-
-  [
+  return [
     {
       label: "File",
       submenu: [

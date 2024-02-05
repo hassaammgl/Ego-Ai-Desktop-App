@@ -14,14 +14,14 @@ const createWindow = () => {
     const webContents = event.sender;
     const win = BrowserWindow.fromWebContents(webContents);
     win.setTitle(title);
-  }); 
+  });
 
   mainWindow.loadFile("./index.html");
-  
-  // set custom menu options
-  Menu.setApplicationMenu(Menu.buildFromTemplate(menu(mainWindow)))
-};
 
+  // set custom menu options
+  let myMenu = new Menu.buildFromTemplate(menu(app));
+  Menu.setApplicationMenu(myMenu);
+};
 
 app.whenReady().then(() => {
   createWindow();
@@ -36,8 +36,7 @@ app.on("window-all-closed", function () {
 });
 
 ipcMain.on("close", (event, title) => {
-  // const webContents = event.sender;
-  // const win = BrowserWindow.fromWebContents(webContents);
-  // win.setTitle(title);
-  console.log(title);
+  if (title === "close window") {
+    if (process.platform !== "darwin") app.quit();
+  }
 });
