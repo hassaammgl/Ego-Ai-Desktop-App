@@ -30,6 +30,13 @@ const menu = (app) => {
       ],
     },
     {
+      label: 'View',
+      submenu: [
+        { role: 'reload' },
+        { role: 'toggledevtools' }
+      ]
+    },
+    {
       label: "Edit",
       submenu: [
         {

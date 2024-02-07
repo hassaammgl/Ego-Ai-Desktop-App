@@ -1,29 +1,30 @@
 const { app, BrowserWindow, ipcMain, Menu } = require("electron/main");
 const { menu } = require("./electron_scripts/Menu");
 const path = require("node:path");
+const exec = require("child_process").exec;
+
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
     height: 800,
     width: 1200,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
+      nodeIntegration: true,
+      contextIsolation: true,
     },
   });
 
-  ipcMain.on("set-title", (event, title) => {
-    const webContents = event.sender;
-    const win = BrowserWindow.fromWebContents(webContents);
-    win.setTitle(title);
-  });
-
   mainWindow.loadFile("./index.html");
-
   // set custom menu options
   let myMenu = new Menu.buildFromTemplate(menu(app));
   Menu.setApplicationMenu(myMenu);
 };
 
 app.whenReady().then(() => {
+  ipcMain.on("get-info", (event, arg) => {
+    const someInfo = "This is some information from the main process";
+    event.reply("info-reply", someInfo);
+  });
   createWindow();
 
   app.on("activate", function () {
@@ -35,8 +36,8 @@ app.on("window-all-closed", function () {
   if (process.platform !== "darwin") app.quit();
 });
 
-ipcMain.on("close", (event, title) => {
-  if (title === "close window") {
+ipcMain.on("close", (event, arg) => {
+  if (arg === "close window") {
     if (process.platform !== "darwin") app.quit();
   }
 });

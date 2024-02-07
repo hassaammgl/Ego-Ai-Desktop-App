@@ -1,3 +1,54 @@
+@font-face {
+  font-family: "arvo";
+  src: url("../public/fonts/arvo/Arvo-Regular.ttf");
+  src: url("../public/fonts/arvo/Arvo-Bold.ttf");
+  src: url("../public/fonts/arvo/Arvo-BoldItalic.ttf");
+  src: url("../public/fonts/arvo/Arvo-Italic.ttf");
+}
+@font-face {
+  font-family: "cute";
+  src: url("../public/fonts/cute_font/CuteFont-Regular.ttf");
+}
+@font-face {
+  font-family: "DS";
+  src: url("../public/fonts/DancingScript/DancingScript-VariableFont_wght.ttf");
+  src: url("../public/fonts/DancingScript/static/DancingScript-Bold.ttf");
+  src: url("../public/fonts/DancingScript/static/DancingScript-Medium.ttf");
+  src: url("../public/fonts/DancingScript/static/DancingScript-Regular.ttf");
+  src: url("../public/fonts/DancingScript/static/DancingScript-SemiBold.ttf");
+}
+@font-face {
+  font-family: "nunito";
+  src: url("../public/fonts/Nunito/Nunito-VariableFont_wght.ttf");
+  src: url("../public/fonts/Nunito/Nunito-Italic-VariableFont_wght.ttf");
+  src: url("../public/fonts/Nunito/static/Nunito-Regular.ttf");
+  src: url("../public/fonts/Nunito/static/Nunito-Black.ttf");
+  src: url("../public/fonts/Nunito/static/Nunito-BlackItalic.ttf");
+  src: url("../public/fonts/Nunito/static/Nunito-Bold.ttf");
+  src: url("../public/fonts/Nunito/static/Nunito-BoldItalic.ttf");
+  src: url("../public/fonts/Nunito/static/Nunito-ExtraBold.ttf");
+  src: url("../public/fonts/Nunito/static/Nunito-ExtraBoldItalic.ttf");
+  src: url("../public/fonts/Nunito/static/Nunito-ExtraLight.ttf");
+  src: url("../public/fonts/Nunito/static/Nunito-ExtraLightItalic.ttf");
+  src: url("../public/fonts/Nunito/static/Nunito-Italic.ttf");
+  src: url("../public/fonts/Nunito/static/Nunito-Medium.ttf");
+  src: url("../public/fonts/Nunito/static/Nunito-Light.ttf");
+  src: url("../public/fonts/Nunito/static/Nunito-LightItalic.ttf");
+  src: url("../public/fonts/Nunito/static/Nunito-MediumItalic.ttf");
+  src: url("../public/fonts/Nunito/static/Nunito-SemiBold.ttf");
+  src: url("../public/fonts/Nunito/static/Nunito-SemiBoldItalic.ttf");
+  src: url("../public/fonts/");
+}
+@font-face {
+  font-family: "quicksand";
+  src: url("../public/fonts/Quicksand/Quicksand-VariableFont_wght.ttf");
+  src: url("../public/fonts/Quicksand/static/Quicksand-Bold.ttf");
+  src: url("../public/fonts/Quicksand/static/Quicksand-Light.ttf");
+  src: url("../public/fonts/Quicksand/static/Quicksand-Medium.ttf");
+  src: url("../public/fonts/Quicksand/static/Quicksand-SemiBold.ttf");
+  src: url("../public/fonts/Quicksand/static/Quicksand-Regular.ttf");
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,49 +56,98 @@
 body {
   width: 100vw;
   height: 100vh;
+  scroll-behavior: smooth;
+  overflow: hidden;
 }
 video {
-    object-fit: cover;
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    z-index: -10;
-    left: 0;
-  }
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: -10;
+  left: 0;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .chat-container {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(95, 2, 2);
   border-radius: 10px;
-  background-color: #f9f9f9;
+  box-shadow: 0px 1px 71px 16px rgb(143, 1, 1);
+  margin: 3rem;
+  width: 50vw;
+  overflow: hidden;
+  height: 80vh;
+  /* font-family: "arvo"; */
+  font-family: "cute";
+  /* font-family: "DS"; */
+  /* font-family: "quicksand"; */
+  font-weight: lighter;
+  color: red;
+  backdrop-filter: blur(3px);
+  h2 {
+    font-size: 4rem;
+    text-align: center;
+  }
+  .chats {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    overflow-y: scroll;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    span {
+      background-color: rgba(255, 255, 255, 0.075);
+      width: 300px;
+      padding: 10px;
+      margin: 10px;
+      box-shadow: rgba(54, 54, 54, 0.11) 0px 54px 55px,
+        rgba(54, 54, 54, 0.11) 0px -12px 30px,
+        rgba(54, 54, 54, 0.11) 0px 4px 6px, rgba(54, 54, 54, 0.11) 0px 12px 13px,
+        rgba(54, 54, 54, 0.11) 0px -3px 5px;
+      border-radius: 10px;
+      font-size: x-large;
+    }
+    .user {
+      margin-left: auto;
+      background: #00000017;
+    }
+  }
 }
 
-/* Chat messages */
-.chat-message {
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #e0e0e0;
-}
-
-/* User message */
-.user-message {
-  text-align: right;
-  background-color: #b3d9ff;
-}
-
-/* Bot message */
-.bot-message {
-  text-align: left;
-  background-color: #d9f2e6;
-}
-
-/* Input field */
-.chat-input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+aside {
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: 1px solid rgb(95, 2, 2);
+    font-family: "cute";
+    color: red;
+    border-radius: 10px;
+    box-shadow: 0px 1px 71px 16px rgb(143, 1, 1);
+    margin: 3rem;
+    width: 30vw;
+    max-height: fit-content;
+    padding: 1rem;
+    backdrop-filter: blur(3px);
+    h2 {
+      font-size: 4rem;
+      line-height: 2rem;
+      text-align: center;
+    }
+    div {
+      font-family: "cute";
+      width: 80%;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      font-size: 1.44rem;
+    }
+  }
 }

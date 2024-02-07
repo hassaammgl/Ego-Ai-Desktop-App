@@ -10,24 +10,50 @@
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
   <body>
-    <button id="mainwinclose">Close</button>
     <video id="bgVideo" autoplay muted loop>
-      <source src="./public//bg.mp4" type="video/mp4" />
+      <source src="./public/bg.mp4" type="video/mp4" />
     </video>
-    <div class="chat-container">
-      <div class="chat-message user-message">
-        Hello! How can I assist you today?
-      </div>
-      <div class="chat-message bot-message">
-        Welcome! I'm your friendly chatbot. Ask me anything!
-      </div>
-      <input
-        type="text"
-        class="chat-input"
-        placeholder="Type your message..."
-      />
-    </div>
-
+    <section>
+      <main class="chat-container">
+        <h2>Ego Chat</h2>
+        <div class="chats">
+          <span class="bot"
+            >Ego: Hi I am Ego , your personal AI assistant. Please tell me How
+            can I help you?</span
+          >
+          <span class="user"> rat: Hello, how are you today? </span>
+          <div class="input-section">
+            <input type="text" />
+            <button id="send">
+              <img src="./public/send.png" alt="send" />
+            </button>
+          </div>
+        </div>
+      </main>
+      <aside>
+        <section class="">
+          <h2>System info</h2>
+          <div>
+            <span id="cpu">CPU: 'Intel'-'Core™ i5-4570' - cores 4 </span>
+            <span id="speed">Speed: 0.8 - 3.6 </span>
+            <span id="os">Os-Info: Linux - Ubuntu '22.04.3 LTS' 'x64'</span>
+            <span id="kernel">kernel: '6.5.0-15-generic'</span>
+            <span id="memory">Memory: 'rat-HP-ProDesk-400-G1-MT'</span>
+          </div>
+        </section>
+        <section>
+          <h2>User Info</h2>
+          <div>
+            <span>Name: "Hassaam Mughal"</span>
+            <span>NickName: "Rat"</span>
+            <span>IP Address: '192.168.100.23'</span>
+            <span>MAC Address: '76:01:2d:a0:8e:fa'</span>
+            <span>Network Type: "wireless"</span>
+          </div>
+        </section>
+      </aside>
+    </section>
     <script src="./scripts/renderer.js"></script>
+    <script src="./scripts/systemInfo.js"></script>
   </body>
 </html>
